@@ -1,11 +1,11 @@
 {
-  "name": "assignment2",
+  "name": "comp229-m2021-week6",
   "version": "0.0.4",
   "private": true,
-  "description": "DMy Portfolio",
+  "description": "Demo Project for COMP229 - Week 6",
   "main": "index.js",
-  "repository": "https://github.com/JoabPa/Assignment2-Portfolio-b.git",
-  "author": "Joab Paredes",
+  "repository": "https://github.com/CentennialCollege/COMP229-M2021-Week6c.git",
+  "author": "Tom Tsiliopoulos <tsiliopoulos@hotmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "node index.js"
