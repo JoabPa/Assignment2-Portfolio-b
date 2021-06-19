@@ -100,15 +100,7 @@ export function ProcessRegisterPage(req: Request, res: Response, next: NextFunct
                 console.error('Error: User Already Exists');
             }
             req.flash('registerMessage', 'Registration Error');
-
-            return res.redirect('/register');
         }
-
-        //after successful registration - login the user
-        return passport.authenticate('local')(req, res, () => 
-        {
-            return res.redirect('/clothing-list');
-        })
 
     });
 
