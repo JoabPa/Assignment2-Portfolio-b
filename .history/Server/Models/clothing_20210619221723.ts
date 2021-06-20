@@ -4,8 +4,11 @@ const Schema = mongoose.Schema; // Schema alias
 const ClothingSchema = new Schema
 ({
     name: String,
-    number: Number,
-    email: String
+    brand: String,
+    category: String,
+    colour: String,
+    size: String,
+    price: Number
 },
 {
     collection: "clothing"

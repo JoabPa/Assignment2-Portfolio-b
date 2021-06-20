@@ -3,6 +3,9 @@ import express, { Request, Response, NextFunction } from 'express';
 // Clothing Model Reference - db.clothing
 import Clothing from '../Models/clothing';
 
+// import Util Functions
+
+import { UserDisplayName } from '../Util';
 
 // Display Functions
 
@@ -18,7 +21,7 @@ export function DisplayClothingListPage(req: Request, res: Response, next: NextF
             res.end(err);
         }
         
-        res.render('index', { title: 'Clothing List', page: 'clothing-list', clothing: clothingCollection  });
+        res.render('index', { title: 'Clothing List', page: 'clothing-list', clothing: clothingCollection, displayName: UserDisplayName(req)  });
     });
 }
 
@@ -40,7 +43,7 @@ export function DisplayEditPage(req: Request, res: Response, next: NextFunction)
         }
 
         // show the edit view
-        res.render('index', { title: 'Edit', page: 'update', clothing: clothingItemToEdit  });
+        res.render('index', { title: 'Edit', page: 'update', clothing: clothingItemToEdit, displayName: UserDisplayName(req)  });
     });
 }
 
@@ -48,7 +51,7 @@ export function DisplayEditPage(req: Request, res: Response, next: NextFunction)
 export function DisplayAddPage(req: Request, res: Response, next: NextFunction): void
 {
     // show the edit view
-    res.render('index', { title: 'Add', page: 'update', clothing: '' });
+    res.render('index', { title: 'Add', page: 'update', clothing: '', displayName: UserDisplayName(req) });
 }
 
 // Process Functions
@@ -63,11 +66,8 @@ export function ProcessEditPage(req: Request, res: Response, next: NextFunction)
     ({
       "_id": id,
       "name": req.body.name,
-      "brand": req.body.brand,
-      "category": req.body.category,
-      "colour": req.body.colour,
-      "size": req.body.size,
-      "price": req.body.price
+      "number": req.body.number,
+      "email": req.body.email
     });
   
     // find the clothing item via db.clothing.update({"_id":id}) and then update
@@ -89,11 +89,8 @@ export function ProcessAddPage(req: Request, res: Response, next: NextFunction):
   let newContact = new Clothing
   ({
     "name": req.body.name,
-    "brand": req.body.brand,
-    "category": req.body.category,
-    "colour": req.body.colour,
-    "size": req.body.size,
-    "price": req.body.price
+    "number": req.body.number,
+    "email": req.body.email
   });
 
   // db.clothing.insert({clothing data is here...})
