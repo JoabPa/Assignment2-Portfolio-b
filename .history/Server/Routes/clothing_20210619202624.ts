@@ -7,7 +7,7 @@ import { DisplayAddPage, DisplayClothingListPage, DisplayEditPage, ProcessAddPag
 
 
 //import Util Functions
-import {AuthGuard} from '../Util/index'
+import {AuthGuard} from '../Util/'
 
 /* GET /clothing-list page. */
 router.get('/', DisplayClothingListPage);
